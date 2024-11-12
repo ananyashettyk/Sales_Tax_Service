@@ -13,7 +13,7 @@ public class Main {
 		// Loop to collect items from the user
 		while (true) {
 
-			System.out.println("Enter the items (e.g., '1 book at 12.49') or type 'done' to finish:");
+//			System.out.println("Enter the items (e.g., '1 book at 12.49') or type 'done' to finish:");
 			String input = scanner.nextLine().trim();
 
 			// Stop input when user types 'done'
@@ -31,12 +31,16 @@ public class Main {
 				String name = parts[0].trim();
 				double price = Double.parseDouble(parts[1].trim());
 
-				System.out.print("Enter category for " + name + " (BOOKS, FOODS, MEDICAL_PRODUCTS, OTHER): ");
-				String category = scanner.nextLine().trim();
+				String category = null;
 
-				if (!Category.isValidCategory(category) && !category.equalsIgnoreCase("OTHER")) {
-					System.out.println("Invalid category. Please enter one of the valid categories.");
-					continue;
+				if (name.toLowerCase().contains("book")) {
+					category = "BOOKS";
+				} else if (name.toLowerCase().contains("chocolate")) {
+					category = "FOODS";
+				} else if (name.toLowerCase().contains("pills")) {
+					category = "MEDICAL_PRODUCTS";
+				} else {
+					category = "OTHER";
 				}
 
 				boolean isImported = name.toLowerCase().contains("imported");
