@@ -31,7 +31,7 @@ public class Main {
 				String name = parts[0].trim();
 				double price = Double.parseDouble(parts[1].trim());
 
-				System.out.print("Enter category for " + name + " (BOOKS, FOOD, MEDICAL_PRODUCTS, OTHER): ");
+				System.out.print("Enter category for " + name + " (BOOKS, FOODS, MEDICAL_PRODUCTS, OTHER): ");
 				String category = scanner.nextLine().trim();
 
 				if (!Category.isValidCategory(category) && !category.equalsIgnoreCase("OTHER")) {
@@ -44,6 +44,7 @@ public class Main {
 				TaxableItem item = new TaxableItem(name, price, isImported, category);
 				cart.setItem(item);
 
+				System.out.println();
 			} catch (NumberFormatException e) {
 				System.out.println("Invalid number format. Please enter valid numbers for price.");
 			}
@@ -51,6 +52,7 @@ public class Main {
 
 		Receipt receipt = cart.generateReceipt(cart.getItems());
 
+		System.out.println();
 		System.out.println(receipt);
 		scanner.close();
 	}

@@ -33,6 +33,6 @@ public class TaxableItem extends Item {
 
 	@Override
 	public String toString() {
-		return String.format("%s : %.2f", getName(), calculatePriceIncludingTax());
+		return String.format("%s: %.2f", getName(), calculatePriceIncludingTax());
 	}
 }
