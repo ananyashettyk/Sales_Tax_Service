@@ -8,12 +8,8 @@ public class Cart {
 
 	private List<TaxableItem> items = new ArrayList<>();
 
-	public void setItem(TaxableItem item) {
+	public void addItem(TaxableItem item) {
 		items.add(item);
-	}
-
-	public List<TaxableItem> getItems() {
-		return items;
 	}
 
 	public double getTotalSalesTax() {
@@ -32,12 +28,9 @@ public class Cart {
 		return totalPrice;
 	}
 
-	public Receipt generateReceipt(List<TaxableItem> items) {
-
-		double totalTax = getTotalSalesTax();
-
+	public Receipt generateReceipt() {
 		List<String> itemDetails = items.stream().map(item -> item.toString()).collect(Collectors.toList());
-
+		double totalTax = getTotalSalesTax();
 		double totalCost = getTotalPrice();
 
 		return new Receipt(itemDetails, totalTax, totalCost);

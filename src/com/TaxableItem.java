@@ -9,6 +9,38 @@ public class TaxableItem extends Item {
 		super(name, price, isImported, category);
 	}
 
+	public static TaxableItem fromInput(String input) {
+		String[] parts = input.split(" at ");
+		if (parts.length != 2) {
+			System.out.println("Invalid input format. Please enter in the format '1 xyz at 00.00'.");
+			return null;
+		}
+
+		try {
+			String name = parts[0].trim();
+			double price = Double.parseDouble(parts[1].trim());
+			boolean isImported = name.toLowerCase().contains("imported");
+			String category = determineCategory(name);
+
+			return new TaxableItem(name, price, isImported, category);
+		} catch (NumberFormatException e) {
+			System.out.println("Invalid number format. Please enter a valid price.");
+			return null;
+		}
+	}
+
+	private static String determineCategory(String name) {
+		if (name.toLowerCase().contains("book")) {
+			return "BOOKS";
+		} else if (name.toLowerCase().contains("chocolate")) {
+			return "FOODS";
+		} else if (name.toLowerCase().contains("pills")) {
+			return "MEDICAL_PRODUCTS";
+		} else {
+			return "OTHER";
+		}
+	}
+
 	public double calculateSalesTax() {
 		double salesTax = 0.0;
 

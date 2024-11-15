@@ -8,37 +8,10 @@ public class Receipt {
 	private double totalTax;
 	private double total;
 
-	public Receipt() {
-	}
-
 	public Receipt(List<String> items, double totalTax, double total) {
 		this.items = items;
 		this.totalTax = totalTax;
 		this.total = total;
-	}
-
-	public double getTotal() {
-		return total;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
-	public List<String> getItems() {
-		return items;
-	}
-
-	public void setItems(List<String> items) {
-		this.items = items;
-	}
-
-	public double getTotalTax() {
-		return totalTax;
-	}
-
-	public void setTotalTax(double totalTax) {
-		this.totalTax = totalTax;
 	}
 
 	@Override
